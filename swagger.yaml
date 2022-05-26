@@ -1,6 +1,12 @@
 tags:
 - name: users
   description: users API
+- name: movies
+  description: movies API
+schemes:
+ - https
+ - http
+
 
 paths:
 # [GET] users
@@ -103,6 +109,106 @@ paths:
         500:
           description: 'Server Error'
 
+
+        
+# [GET] movies
+  /movies:
+    get:
+      tags:
+      - movies
+      summary: Find all Movies
+      responses:
+        200:
+          description: 'OK'
+        500:
+          description: 'Server Error'
+  
+# [POST] movies
+    post:
+      tags:
+      - movies
+      summary: Add Movie
+      parameters:
+      - name: body
+        in: body
+        description: movie Data
+        required: true
+        schema:
+          $ref: '#/definitions/movies'
+      responses:
+        201:
+          description: 'Created'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [GET] movies/id
+  /movies/{id}:
+    get:
+      tags:
+      - movies
+      summary: Find Movie By Id
+      parameters:
+      - name: id
+        in: path
+        description: Movie Id
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+          
+
+          
+
+# [GET] movies/ratings/rating
+  /movies/ratings/{rating}:
+    get:
+      tags:
+      - movies
+      summary: Find Movie By Rating
+      parameters:
+      - name: rating
+        in: path
+        description: Movie Rating
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [GET] movies/genre/gen
+  /movies/genre/{gen}:
+    get:
+      tags:
+      - movies
+      summary: Find Movie By Genre
+      parameters:
+      - name: gen
+        in: path
+        description: Movie Genre
+        required: true
+        type: string
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+      
 # definitions
 definitions:
   users:
@@ -117,7 +223,29 @@ definitions:
       password:
         type: string
         description: user Password
-
-schemes:
- - https
- - http
+  movies:
+    type: object
+    required:
+        - id
+        - title
+        - genres
+        - releaseDate
+        - rating
+    properties:
+      id:
+        type: number
+        description: movie Id
+      title:
+        type: string
+        description: movie Title
+      genres:
+        type: array
+        items:
+         type: string
+        description: movie Genres
+      releaseDate:
+        type: string
+        description: movie Release Date
+      rating:
+        type: number
+        description: movie Rating
