@@ -41,7 +41,7 @@ class MovieController {
 
   public getMovieByGenre = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const movieGenre = String(req.params.genre);
+      const movieGenre = String(req.params.gen);
       const findMovieData: Movie[] = await this.movieService.getMoviesByGenre(movieGenre)
 
       res.status(201).json({ data: findMovieData, message: 'findAll' });
