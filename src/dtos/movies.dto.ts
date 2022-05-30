@@ -12,7 +12,4 @@ export class CreateMovieDto {
 
   @IsNumber()
   public rating: number
-
-  @IsNumber()
-  public id: number
 }
