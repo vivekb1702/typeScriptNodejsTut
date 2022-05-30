@@ -53,7 +53,7 @@ class MovieController {
 
   public createMovie = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const movieData: CreateMovieDto = {...req.body};
+      const movieData: CreateMovieDto = req.body;
       const createMovieData: Movie = await this.movieService.createMovie(movieData);
 
       res.status(201).json({ data: createMovieData, message: 'created' });

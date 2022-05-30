@@ -7,9 +7,10 @@ export class CreateMovieDto {
   @IsArray()
   public genres: string[];
 
+  @IsNumber()
+  public rating: number
+  
   @IsString()
   public releaseDate: string;
 
-  @IsNumber()
-  public rating: number
 }

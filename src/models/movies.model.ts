@@ -1,7 +1,7 @@
 import { Sequelize, DataTypes, Model, Optional } from 'sequelize';
 import { Movie } from '@interfaces/movies.interface';
 
-export type movieCreationAttributes = Optional<Movie, 'id' | 'title' | 'genres' | 'rating' | 'releaseDate'>;
+export type movieCreationAttributes = Optional<Movie, 'id'>;
 
 export class MovieModal extends Model<Movie, movieCreationAttributes> implements Movie {
   public id: number;
@@ -9,6 +9,9 @@ export class MovieModal extends Model<Movie, movieCreationAttributes> implements
   public genres: string[];
   public rating: number;
   public releaseDate: string;
+
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
 }
 
 export default function (sequelize: Sequelize): typeof MovieModal {

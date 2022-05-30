@@ -1,7 +1,7 @@
 export interface Movie {
-    title: string;
-    genres: string[];
-    releaseDate: string;
-    rating: number;
+  id: number;
+  title: string;
+  genres: string[];
+  releaseDate: string;
+  rating: number;
 }
-
