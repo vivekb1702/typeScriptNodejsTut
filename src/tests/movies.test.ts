@@ -128,7 +128,7 @@ describe('Testing Movies', () => {
       });
       (Sequelize as any).authenticate = jest.fn();
       const app = new App([movieRoute]);
-      return request(app.getServer()).post(`${movieRoute.path}`).send(movieData).expect(409);
+      return request(app.getServer()).post(`${movieRoute.path}`).expect(400);
     });
   });
   

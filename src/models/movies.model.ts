@@ -28,7 +28,7 @@ export default function (sequelize: Sequelize): typeof MovieModal {
       },
       genres: {
         allowNull: false,
-        type: DataTypes.ARRAY,
+        type: DataTypes.ARRAY(DataTypes.STRING),
       },
       rating: {
         allowNull: false,

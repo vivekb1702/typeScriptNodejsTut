@@ -1,4 +1,5 @@
 import DB from '@/databases'
+import { CreateMovieDto } from '@/dtos/movies.dto';
 import { HttpException } from '@/exceptions/HttpException'
 import { Movie } from '@interfaces/movies.interface'
 import { isEmpty } from '@utils/util'
@@ -39,7 +40,7 @@ class MovieService {
         return findMovies
     }
 
-    public async createMovie(movie: Movie): Promise<Movie> {
+    public async createMovie(movie: CreateMovieDto): Promise<Movie> {
         if (isEmpty(movie)) throw new HttpException(400, "Data Missing");
         const findMovie: Movie = await this.movies.findOne({where:{
             title:movie.title

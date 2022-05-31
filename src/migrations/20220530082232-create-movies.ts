@@ -13,7 +13,7 @@ module.exports = {
         type: DataTypes.STRING(255)
       },
       genres: {
-        type: DataTypes.ARRAY
+        type: DataTypes.ARRAY(DataTypes.STRING)
       },
       rating: {
         type: DataTypes.NUMBER
